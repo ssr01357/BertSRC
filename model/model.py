@@ -5,6 +5,8 @@ from transformers.modeling_outputs import SequenceClassifierOutput
 
 
 class BertSrcClassifier(BertPreTrainedModel):
+    """BertSRC Classifier
+    """
     def __init__(self, config, mask_token_id: int, num_token_layer: int = 2):
         super().__init__(config)
         self.mask_token_id = mask_token_id

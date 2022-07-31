@@ -30,6 +30,20 @@ def compute_metrics(pred):
     return {"accuracy": acc, "precision": precision, "recall": recall, "f1": f1}
 
 def preprocess_data(df, tokenizer, x_col, y_col, e1_col, e2_col):
+    """preprocesse data
+
+    Args:
+        df: source dataframe data
+        tokenizer: tokenizer
+        x_col: sentence column name
+        y_col: label column name
+        e1_col: first entity column name
+        e2_col: second entity column name
+
+    Returns:
+        SrcDataset: SrcDataset
+    """
+    # 2-Masted-senteces input format
     x1 = df.apply(lambda x: x[x_col].replace(x[e1_col], "[MASK]"), axis=1).tolist()
     x2 = df.apply(lambda x: x[x_col].replace(x[e2_col], "[MASK]"), axis=1).tolist()
 
